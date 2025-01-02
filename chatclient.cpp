@@ -16,6 +16,36 @@ chatClient::chatClient(QObject *parent): QObject(parent)
     });
 }
 
+QTcpSocket *chatClient::clientSocket() const
+{
+    return m_clientSocket;
+}
+
+void chatClient::setClientSocket(QTcpSocket *newClientSocket)
+{
+    m_clientSocket = newClientSocket;
+}
+
+void chatClient::sendJson(const QJsonObject &json)
+{
+    if(clientSocket()->state()!= QAbstractSocket::ConnectedState)
+        return;
+    const QByteArray jsonData=QJsonDocument(json).toJson(QJsonDocument::Compact);
+    QDataStream socketStream(m_clientSocket);
+    socketStream.setVersion(QDataStream::Qt_5_7);
+    socketStream<<jsonData;
+}
+
+QString chatClient::getCurPriChatUser() const
+{
+    return curPriChatUser;
+}
+
+void chatClient::setCurPriChatUser(const QString &newCurPriChatUser)
+{
+    curPriChatUser = newCurPriChatUser;
+}
+
 void chatClient::disconnectFromHost()
 {
     m_clientSocket->disconnectFromHost();
@@ -46,13 +76,12 @@ void chatClient::onReadyRead()
     }
 }
 
-void chatClient::sendMessage(const QString &text, const QString &type)
+void chatClient::sendMessage(const QString &text, const QString &type,const QString &receiver)
 {
-    qDebug()<<text;
     if(m_clientSocket->state()!= QAbstractSocket::ConnectedState)
         return;
 
-    if(!text.isEmpty()){
+    if(!type.isEmpty()){
         //create a ODataStream operating on the socket
         QDataStream serverStream(m_clientSocket);
         serverStream.setVersion(QDataStream::Qt_5_12);
@@ -60,6 +89,9 @@ void chatClient::sendMessage(const QString &text, const QString &type)
         QJsonObject message;
         message["type"]=type;
         message["text"]= text;
+        if(!receiver.isEmpty()){
+            message["receiver"] = receiver;
+        }
         // send the JSON using QDatastream
         serverStream<<QJsonDocument(message).toJson();
     }

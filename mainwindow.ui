@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>559</width>
-    <height>387</height>
+    <width>637</width>
+    <height>445</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>聊天室客户端</string>
@@ -17,7 +23,7 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="gridLayout_4">
     <item row="0" column="0">
      <widget class="QLabel" name="titleLabel">
       <property name="text">
@@ -28,38 +34,177 @@
     <item row="1" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
-      <widget class="QWidget" name="chatPage">
-       <layout class="QGridLayout" name="gridLayout_4">
+      <widget class="QWidget" name="searchPage">
+       <layout class="QGridLayout" name="gridLayout_6">
         <item row="0" column="0">
-         <layout class="QHBoxLayout" name="hout">
-          <item>
-           <widget class="QTextEdit" name="textEdit">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QListWidget" name="userList">
-            <property name="maximumSize">
-             <size>
-              <width>120</width>
-              <height>16777215</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>类型</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>用户</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>开始时间</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_7">
+          <property name="text">
+           <string>结束时间</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>关键字</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
+         <widget class="QComboBox" name="type">
+          <item>
+           <property name="text">
+            <string>群聊</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>私聊</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="users"/>
+        </item>
+        <item row="1" column="2">
+         <widget class="QDateTimeEdit" name="startTime"/>
+        </item>
+        <item row="1" column="3">
+         <widget class="QDateTimeEdit" name="endTime"/>
+        </item>
+        <item row="1" column="4">
+         <widget class="QLineEdit" name="keyWord"/>
+        </item>
+        <item row="1" column="5">
+         <widget class="QPushButton" name="searchBt">
+          <property name="text">
+           <string>搜索</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="6">
+         <widget class="QListWidget" name="searchList"/>
+        </item>
+        <item row="0" column="5">
+         <widget class="QPushButton" name="quitSearch">
+          <property name="text">
+           <string>退出</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="publicChatPage">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="RoomChat">
+          <property name="text">
+           <string>RoomChat</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" colspan="2">
+         <widget class="QPushButton" name="search">
+          <property name="text">
+           <string>消息搜索</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" rowspan="2">
+         <widget class="QTextEdit" name="publicChatShow">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" colspan="2">
+         <widget class="QListWidget" name="userList">
+          <property name="maximumSize">
+           <size>
+            <width>130</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QPushButton" name="noBan">
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>解禁</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QPushButton" name="noWord">
+          <property name="maximumSize">
+           <size>
+            <width>60</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>禁言</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="3">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QLineEdit" name="edit"/>
+           <widget class="QLineEdit" name="MessageEdit"/>
           </item>
           <item>
            <widget class="QPushButton" name="send">
@@ -76,6 +221,48 @@
            </widget>
           </item>
          </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="PriChatPage">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="1">
+         <widget class="QTextEdit" name="PriChatShow">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="2">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLineEdit" name="priMessage"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="PriSendBt">
+            <property name="text">
+             <string>发送</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="quitPriChat">
+            <property name="text">
+             <string>退出私聊</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="PriChatName">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -109,10 +296,24 @@
         </item>
         <item row="1" column="1">
          <layout class="QGridLayout" name="loginFrame">
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>服务器地址：</string>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_3">
             <property name="text">
              <string>昵称：</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" colspan="3">
+           <widget class="QPushButton" name="loginBt">
+            <property name="text">
+             <string>登录</string>
             </property>
            </widget>
           </item>
@@ -123,24 +324,7 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>服务器地址：</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QLineEdit" name="userName"/>
-          </item>
-          <item row="4" column="0" colspan="3">
-           <widget class="QPushButton" name="loginBt">
-            <property name="text">
-             <string>登录</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0" colspan="3">
+          <item row="3" column="0" colspan="3">
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Orientation::Vertical</enum>
@@ -152,6 +336,19 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLineEdit" name="userName"/>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLineEdit" name="pwd"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>密码：</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
